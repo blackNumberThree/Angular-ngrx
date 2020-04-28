@@ -1,0 +1,66 @@
+<div class="main">
+<h2 class="head-title">Таблица игроков</h2>
+<div class="sort-table">
+    <p>Отсортировать список по: </p>
+    <div class="sort-type">
+        <div class="user-number">
+            <label (click)="changeList( this.getState() )"
+            class=" btn" for="choice1">
+                <input type="radio" id="choice1" checked='checked' class=" btn" name="contact" >
+                Порядку
+            </label>
+        </div>
+        <div class="user-name"  >  
+            <label (click)="changeList( this.sortByName() )"
+            class=" btn" for="choice2">
+                <input type="radio" id="choice2"  name="contact" >
+                Имени
+            </label>
+        </div>
+     
+        <div class="btn"  >
+             <label (click)="changeList( this.sortByCountDown() )" 
+             class=" btn"for="choice3">
+                <input type="radio" id="choice3" name="contact" >
+                Очкам(<i class="fas fa-arrow-up small"></i>)
+            </label>
+        </div>
+        <div class="btn" >
+            <label (click)="changeList( this.sortByCountUp() )"
+            class=" btn" for="choice4">
+                <input type="radio" id="choice4" name="contact">
+                Очкам(<i class="fas fa-arrow-down small"></i>)
+            </label>
+        </div>
+    </div>
+</div>
+<ul class="user-list"> 
+    <li><span class="user-number"> Номер</span>
+        <span class="user-name">Имя</span>
+        <span class="user-count" >Количество очков</span></li>
+    <li *ngFor="let user of setList; let idx = index" class="user-item">
+        <span class="user-number">{{ idx+1 }} </span> <span class="user-name"> {{user.name}}</span>  
+        <span class="user-increment btn"(click)="increment(user.createNumber)">+</span> 
+        <span class="user-count"> {{user.count}}</span>
+        <span class='user-decrement btn '(click)="decrement(user.createNumber)" >-</span> 
+        <span class="user-delete btn" (click)="deletePlayer(user.createNumber)" > <i class="fas fa-trash"></i> </span>
+    </li>
+</ul>
+
+<input class="inputName" type="text" maxlength="36" #newPlayerName> <button (click)="createPlayer(newPlayerName.value); newPlayerName.value='';">Добавить нового Игрока</button>
+
+</div>
+  <!-- <ul>
+    <li *ngFor="let user of (useSelect$ | async); let idx = index">
+        <span>{{ idx }} </span> <span> {{user.name}}</span>  {{user.createNumber}}
+        <span (click)="increment(user.createNumber)">+</span> <span> {{user.count}}</span><span (click)="decrement(user.createNumber)" >-</span> 
+        <span (click)="deletePlayer(user.createNumber)" > ---- </span>
+    </li>
+</ul> -->
+
+
+ 
+
+
+
+
